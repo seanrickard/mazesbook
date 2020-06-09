@@ -1,8 +1,9 @@
 require 'grid'
-require 'binary_tree'
+require 'sidewinder'
 
-grid = Grid.new(4,4)
-BinaryTree.on(grid)
+grid = Grid.new(6,6)
+
+Sidewinder.on(grid)
 
 puts grid
 
