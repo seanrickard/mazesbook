@@ -21,7 +21,7 @@ class Grid
 
     def configure_cells
         each_cell do |cell|
-            row, col = cewll.row, cell.column
+            row, col = cell.row, cell.column
 
             cell.north = self[row - 1, col]
             cell.south = self[row + 1, col]
@@ -32,7 +32,7 @@ class Grid
 
     def [](row, column)
         return nil unless row.between?(0, @rows -1)
-        return nil unless column.between?(0, @grid[row].count -1)
+        return nil unless column.between?(0, @grid[row].count - 1)
         @grid[row][column]
     end
 
@@ -54,13 +54,15 @@ class Grid
     end
 
     def each_cell
-        @grid.each do |row|
-            yield row
+        each_row do |row|
+            row.each do |cell|
+                yield cell if cell
+            end
         end 
     end
 
     def to_s
-        output = "+" + "---+" + * columns + "\n"
+        output = "+" + "---+" * columns + "\n"
 
         each_row do |row|
             top = "|"
@@ -85,3 +87,4 @@ class Grid
 
         output
     end
+end

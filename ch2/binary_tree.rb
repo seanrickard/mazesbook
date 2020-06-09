@@ -7,13 +7,14 @@ class BinaryTree
             neighbors << cell.east if cell.east
 
             index = rand(neighbors.length)
-            neighbor - neighbors[index]
+            neighbor = neighbors[index]
 
             cell.link(neighbor) if neighbor
         end
 
         grid
     end
+
 end
 
         
